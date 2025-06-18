@@ -96,11 +96,7 @@ create_basic = superu_client.assistants.create_basic(
     system_prompt=system_prompt
 )
 
-#print(create_basic)
 assistant_id = create_basic['id']
-
-#print(assistant_id)
-
 
 phone_number = '919327434748'
 
@@ -118,8 +114,6 @@ call_data = ast.literal_eval(call_data)
 call_uuid = call_data['call_uuid']
 
 print(call_uuid)
-
-
 
 analysis = superu_client.calls.analysis(call_uuid)
 
