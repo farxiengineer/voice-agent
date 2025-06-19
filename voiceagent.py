@@ -1,6 +1,7 @@
 import superu
 import json
 import ast
+import time
 
 
 superu_client = superu.SuperU('D2alvVxgV32Psk75BKit4ukhXp')
@@ -96,25 +97,52 @@ create_basic = superu_client.assistants.create_basic(
     system_prompt=system_prompt
 )
 
-assistant_id = create_basic['id']
+# assistant_id = create_basic['id']
 
-phone_number = '919327434748'
+# phone_number = '919327434748'
+# twilio_phone_number_id = '918035737904'
 
-create_call = superu_client.calls.create(
-            from_='918035737904',
-            to_=phone_number,
-            assistant_id=assistant_id,
-            max_duration_seconds=120
-        )
+# # create_call = superu_client.calls.create(
+# #             from_='918035737904',
+# #             to_=phone_number,
+# #             assistant_id=assistant_id,
+# #             max_duration_seconds=120
+# #         )
 
-call_data = create_call.text
-print(call_data)
+# # call_data = create_call.text
+# # print(call_data)
 
-call_data = ast.literal_eval(call_data)
-call_uuid = call_data['call_uuid']
+# # call_data = ast.literal_eval(call_data)
+# # call_uuid = call_data['call_uuid']
 
-print(call_uuid)
+# # print(call_uuid)
 
-analysis = superu_client.calls.analysis(call_uuid)
+# print("Initiating Twilio call...")
+# call_data = superu_client.calls.create_twilio_call(
+#             phoneNumberId=twilio_phone_number_id,
+#             to_=phone_number,
+#             assistant_id=assistant_id
+#         )
 
-print(analysis)
+# print("Twilio call creation response:")
+# print(json.dumps(call_data, indent=2))
+
+# call_uuid = call_data['call_uuid']
+
+# print(f"\nCall initiated with UUID: {call_uuid}")
+# print("Waiting for call to complete to fetch analysis...")
+
+# time.sleep(30)
+
+
+# print("\nFetching Twilio call analysis...")
+# # Using the twilio specific analysis method
+# analysis_data = superu_client.calls.analysis_twilio_call(call_uuid)
+
+# print("\n--- Call Analysis ---")
+# # The 'analysis_twilio_call' function also returns a dictionary
+# print(json.dumps(analysis_data, indent=2))
+
+# analysis = superu_client.calls.analysis(call_uuid)
+
+# print(analysis.text)
