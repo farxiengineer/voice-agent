@@ -97,25 +97,25 @@ create_basic = superu_client.assistants.create_basic(
     system_prompt=system_prompt
 )
 
-# assistant_id = create_basic['id']
+assistant_id = create_basic['id']
 
-# phone_number = '919327434748'
-# twilio_phone_number_id = '918035737904'
+phone_number = '919327434748'
+twilio_phone_number_id = '918035737904'
 
-# # create_call = superu_client.calls.create(
-# #             from_='918035737904',
-# #             to_=phone_number,
-# #             assistant_id=assistant_id,
-# #             max_duration_seconds=120
-# #         )
+create_call = superu_client.calls.create(
+            from_='918035737904',
+            to_=phone_number,
+            assistant_id=assistant_id,
+            max_duration_seconds=120
+        )
 
-# # call_data = create_call.text
-# # print(call_data)
+call_data = create_call.text
+print(call_data)
 
-# # call_data = ast.literal_eval(call_data)
-# # call_uuid = call_data['call_uuid']
+call_data = ast.literal_eval(call_data)
+call_uuid = call_data['call_uuid']
 
-# # print(call_uuid)
+print(call_uuid)
 
 # print("Initiating Twilio call...")
 # call_data = superu_client.calls.create_twilio_call(
